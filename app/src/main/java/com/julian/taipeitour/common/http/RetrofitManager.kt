@@ -1,11 +1,13 @@
 package com.julian.taipeitour.common.http
 
+import com.google.gson.GsonBuilder
 import com.julian.taipeitour.domain.TravelApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
@@ -21,7 +23,7 @@ object RetrofitManager {
 
     @Singleton
     @Provides
-    private fun provideRetrofit(): Retrofit {
+    fun provideRetrofit(): Retrofit {
         val clientBuilder = OkHttpClient.Builder()
             .addInterceptor(AuthenticationInterceptor())
             .connectTimeout(60, TimeUnit.SECONDS)

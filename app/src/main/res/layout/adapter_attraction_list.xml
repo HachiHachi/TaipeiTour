@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="data"
+            type="com.julian.taipeitour.domain.AttractionsData" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="8dp"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="8dp"/>
+
+
+        <ImageView
+            android:id="@+id/img_attraction"
+            android:layout_width="125dp"
+            android:layout_height="125dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/guide_start"
+            tools:src="@mipmap/ic_launcher"/>
+
+        <TextView
+            android:id="@+id/tv_attractions_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:textSize="@dimen/primary_text_size"
+            android:textColor="@color/primary_text"
+            android:text="@{data.name}"
+            app:layout_constraintTop_toTopOf="@id/img_attraction"
+            app:layout_constraintBottom_toTopOf="@id/tv_attractions_content"
+            app:layout_constraintStart_toEndOf="@id/img_attraction"
+            app:layout_constraintEnd_toStartOf="@id/img_arrow"
+            tools:text="It is Attraction Title"/>
+
+        <TextView
+            android:id="@+id/tv_attractions_content"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="3"
+            android:textSize="@dimen/secondary_text_size"
+            android:textColor="@color/secondary_text"
+            android:text="@{data.introduction}"
+            app:layout_constraintTop_toBottomOf="@id/tv_attractions_title"
+            app:layout_constraintBottom_toBottomOf="@id/img_attraction"
+            app:layout_constraintStart_toStartOf="@id/tv_attractions_title"
+            app:layout_constraintEnd_toEndOf="@id/tv_attractions_title"
+            tools:text="It is Attraction content, It is Attraction content,It is Attraction content,It is Attraction content"/>
+
+        <ImageView
+            android:id="@+id/img_arrow"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_arrow_right"
+            app:layout_constraintEnd_toEndOf="@id/guide_end"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

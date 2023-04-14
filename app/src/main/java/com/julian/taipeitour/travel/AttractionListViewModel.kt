@@ -22,6 +22,7 @@ class AttractionListViewModel @Inject constructor(
 
     var isLoadFinish: Boolean = false
 
+    //Pair<language,page>
     lateinit var attractionQuery: Pair<String, Int>
 
     fun getAttractionList() {

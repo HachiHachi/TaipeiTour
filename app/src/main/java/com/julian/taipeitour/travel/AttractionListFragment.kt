@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.julian.taipeitour.R
@@ -77,6 +78,14 @@ class AttractionListFragment: BaseFragment<FragmentAttractionListBinding>() {
                 }
             }
         }
+
+        findNavController().currentBackStackEntry?.savedStateHandle
+            ?.getLiveData<String>("key")
+            ?.observe(viewLifecycleOwner) { result ->
+                if (result == viewModel.attractionQuery.first) return@observe
+                viewModel.clearData(result)
+                viewModel.getAttractionList()
+        }
     }
 
     private fun initAdapter() {
@@ -118,6 +127,6 @@ class AttractionListFragment: BaseFragment<FragmentAttractionListBinding>() {
     }
 
     private fun showLangDialog() {
-
+        findNavController().navigate(R.id.action_AttractionList_to_SelectLanguage)
     }
 }

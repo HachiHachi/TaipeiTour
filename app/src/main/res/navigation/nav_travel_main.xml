@@ -10,6 +10,18 @@
         android:name="com.julian.taipeitour.travel.AttractionListFragment"
         tools:layout="@layout/fragment_attraction_list">
 
+        <action
+            android:id="@+id/action_AttractionList_to_SelectLanguage"
+            app:destination="@id/selectLanguageDialog">
+        </action>
+
     </fragment>
+
+    <dialog
+        android:id="@+id/selectLanguageDialog"
+        android:name="com.julian.taipeitour.travel.SelectLanguageDialog"
+        tools:layout="@layout/dialog_select_language">
+
+    </dialog>
 
 </navigation>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--景點支援國家-->
+    <array name="country_code_key">
+        <item>@string/language_traditional</item>
+        <item>@string/language_chinese</item>
+        <item>@string/language_english</item>
+        <item>@string/language_japanese</item>
+        <item>@string/language_korean</item>
+        <item>@string/language_spanish</item>
+        <item>@string/language_indo</item>
+        <item>@string/language_thailand</item>
+        <item>@string/language_vietnam</item>
+    </array>
+
+    <!--景點支援語系-->
+    <array name="country_code_value">
+        <item>zh-tw</item>
+        <item>zh-cn</item>
+        <item>en</item>
+        <item>ja</item>
+        <item>ko</item>
+        <item>es</item>
+        <item>id</item>
+        <item>th</item>
+        <item>vi</item>
+    </array>
+
+</resources>

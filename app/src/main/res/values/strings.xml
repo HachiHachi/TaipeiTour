@@ -3,4 +3,17 @@
     <string name="toolbar_title_city">TaipeiTour</string>
     <string name="menu_item_lang">Language</string>
     <string name="loading">Loading…</string>
+
+    <!--region language-->
+    <string name="language_traditional">繁體中文</string>
+    <string name="language_chinese">簡體中文</string>
+    <string name="language_english">英文</string>
+    <string name="language_japanese">日文</string>
+    <string name="language_korean">韓文</string>
+    <string name="language_spanish">西班牙文</string>
+    <string name="language_indo">印尼文</string>
+    <string name="language_thailand">泰文</string>
+    <string name="language_vietnam">越南文</string>
+    <!--endregion -->
+
 </resources>

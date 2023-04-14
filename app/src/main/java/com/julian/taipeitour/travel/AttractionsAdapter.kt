@@ -42,8 +42,8 @@ class AttractionsAdapter(var itemClick: ItemClickListener) :
             binding.data = attractionsData
             binding.imgAttraction.load(attractionsData.images.getOrNull(0)?.src) {
                 crossfade(true)
-                placeholder(R.drawable.image_defult)
-                error(R.drawable.image_defult)
+                placeholder(R.drawable.image_default)
+                error(R.drawable.image_default)
                 transformations(RoundedCornersTransformation(10f))
             }
         }

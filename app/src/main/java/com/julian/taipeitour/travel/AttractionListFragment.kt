@@ -39,7 +39,8 @@ class AttractionListFragment: BaseFragment<FragmentAttractionListBinding>() {
         initAdapter()
         initObserver()
 
-        viewModel.setAttractionQuery("zh-tw", 1)
+        //預設第1筆
+        viewModel.setAttractionQuery(resources.getStringArray(R.array.country_code_value)[0], 1)
         viewModel.getAttractionList()
     }
 
@@ -76,6 +77,10 @@ class AttractionListFragment: BaseFragment<FragmentAttractionListBinding>() {
                 is AttractionListViewModel.AttractionState.RefreshAttractionList -> {
                     attractionAdapter.submitList(viewModel.dataList)
                 }
+
+                is AttractionListViewModel.AttractionState.NextToDetail -> {
+                    findNavController().navigate(R.id.action_AttractionList_to_AttractionDetail, it.bundle)
+                }
             }
         }
 
@@ -92,7 +97,7 @@ class AttractionListFragment: BaseFragment<FragmentAttractionListBinding>() {
         binding.rvTravelAttraction.apply {
             attractionAdapter = AttractionsAdapter(object : AttractionsAdapter.ItemClickListener {
                 override fun onItemClick(attractionsData: AttractionsData) {
-                    Toast.makeText(context, attractionsData.name, Toast.LENGTH_SHORT).show()
+                    viewModel.goToDetail(attractionsData)
                 }
             })
 
@@ -128,5 +133,10 @@ class AttractionListFragment: BaseFragment<FragmentAttractionListBinding>() {
 
     private fun showLangDialog() {
         findNavController().navigate(R.id.action_AttractionList_to_SelectLanguage)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        viewModel.uiState.value = null
     }
 }

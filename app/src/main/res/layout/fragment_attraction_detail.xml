@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.fragment.AttractionsDetailsFragment">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.julian.taipeitour.domain.AttractionsData" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/ToolBarStyle"
+            app:navigationIcon="@drawable/ic_arrow_back"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <ImageView
+            android:id="@+id/iv_banner"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            tools:src="@drawable/image_default"
+            tools:ignore="ContentDescription" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@id/iv_banner"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginHorizontal="16dp">
+
+                    <TextView
+                        android:id="@+id/tv_attraction_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/PrimaryText"
+                        android:text="@{data.name}"
+                        tools:text="Attraction Name"/>
+
+                    <TextView
+                        android:id="@+id/tv_attraction_introduction"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        style="@style/SecondaryText"
+                        android:layout_marginTop="16dp"
+                        android:text="@{data.introduction}"
+                        tools:text="Attraction Introduction"/>
+
+                    <TextView
+                        android:id="@+id/tv_attraction_address_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/SecondaryText"
+                        android:layout_marginTop="16dp"
+                        android:text="@string/attraction_detail_address_title" />
+
+                    <TextView
+                        android:id="@+id/tv_attraction_address"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/SecondaryText"
+                        android:text="@{data.address}" />
+
+                    <TextView
+                        android:id="@+id/tv_attraction_modify_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/SecondaryText"
+                        android:layout_marginTop="24dp"
+                        android:text="@string/attraction_detail_modify_title" />
+
+                    <TextView
+                        android:id="@+id/tv_attraction_modify"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/SecondaryText"
+                        android:text="@{data.modified}"
+                        tools:text="2023-04-14 23:59:59"/>
+
+                    <TextView
+                        android:id="@+id/tv_attraction_url"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/SecondaryText"
+                        android:layout_marginTop="16dp"
+                        android:paddingBottom="32dp"
+                        android:text="@{data.url}"
+                        tools:text="URL"/>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </ScrollView>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

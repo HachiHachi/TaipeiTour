@@ -15,6 +15,30 @@
             app:destination="@id/selectLanguageDialog">
         </action>
 
+        <action
+            android:id="@+id/action_AttractionList_to_AttractionDetail"
+            app:destination="@id/attractionDetailFragment">
+        </action>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/attractionDetailFragment"
+        android:name="com.julian.taipeitour.travel.AttractionDetailFragment"
+        tools:layout="@layout/fragment_attraction_detail">
+
+        <action
+            android:id="@+id/action_AttractionDetail_to_WebView"
+            app:destination="@id/webFragment">
+        </action>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/webFragment"
+        android:name="com.julian.taipeitour.travel.WebViewFragment"
+        tools:layout="@layout/fragment_webview">
+
     </fragment>
 
     <dialog

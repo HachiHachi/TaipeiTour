@@ -8,7 +8,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.julian.taipeitour.R
 import com.julian.taipeitour.databinding.DialogSelectLanguageBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SelectLanguageDialog: DialogFragment(R.layout.dialog_select_language) {
 
     private lateinit var binding: DialogSelectLanguageBinding
@@ -32,7 +34,7 @@ class SelectLanguageDialog: DialogFragment(R.layout.dialog_select_language) {
             languageArray.add(LanguageItem(lang[index], code[index]))
         }
 
-        binding.lvLang.apply {
+        binding.rvLanguage.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = SelectLanguageAdapter(languageArray, object : SelectLanguageAdapter.ItemClickListener{
                 override fun onItemClick(languageItem: LanguageItem) {

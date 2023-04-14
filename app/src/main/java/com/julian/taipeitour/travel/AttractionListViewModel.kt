@@ -1,9 +1,12 @@
 package com.julian.taipeitour.travel
 
+import android.os.Bundle
 import android.util.Log
+import androidx.core.os.bundleOf
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.julian.taipeitour.MainActivity
 import com.julian.taipeitour.domain.AttractionsData
 import com.julian.taipeitour.domain.repo.TourRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -64,6 +67,11 @@ class AttractionListViewModel @Inject constructor(
         setAttractionQuery(lang, 1)
     }
 
+    fun goToDetail(attractionsData: AttractionsData) {
+        val bundle = bundleOf(MainActivity.BUNDLE_KEY to attractionsData)
+        uiState.value = AttractionState.NextToDetail(bundle)
+    }
+
     /**
      *  View的狀態
      */
@@ -75,5 +83,6 @@ class AttractionListViewModel @Inject constructor(
 
         data class HandleLoadingProgress(val showing: Boolean): AttractionState()
 
+        data class NextToDetail(val bundle: Bundle): AttractionState()
     }
 }

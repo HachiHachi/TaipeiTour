@@ -47,7 +47,7 @@ class AttractionListFragment: BaseFragment<FragmentAttractionListBinding>() {
     private fun initToolbar() {
         binding.toolbar.apply {
             title = string(R.string.toolbar_title_city)
-            inflateMenu(R.menu.menu)
+            inflateMenu(R.menu.menu_main)
             setOnMenuItemClickListener {
                 when (it.itemId) {
                     R.id.menu_lang -> {
@@ -79,7 +79,7 @@ class AttractionListFragment: BaseFragment<FragmentAttractionListBinding>() {
                 }
 
                 is AttractionListViewModel.AttractionState.NextToDetail -> {
-                    findNavController().navigate(R.id.action_AttractionList_to_AttractionDetail, it.bundle)
+                    findNavController().navigate(R.id.action_AttractionListFragment_to_AttractionDetailFragment, it.bundle)
                 }
             }
         }
@@ -132,7 +132,7 @@ class AttractionListFragment: BaseFragment<FragmentAttractionListBinding>() {
     }
 
     private fun showLangDialog() {
-        findNavController().navigate(R.id.action_AttractionList_to_SelectLanguage)
+        findNavController().navigate(R.id.action_AttractionListFragment_to_SelectLanguageDialog)
     }
 
     override fun onDestroyView() {

@@ -67,4 +67,7 @@ dependencies {
 
     //load image Util
     implementation 'io.coil-kt:coil:2.2.2'
+
+    //image Banner
+    implementation 'io.github.youth5201314:banner:2.2.2'
 }

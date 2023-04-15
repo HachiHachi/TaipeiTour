@@ -11,12 +11,12 @@
         tools:layout="@layout/fragment_attraction_list">
 
         <action
-            android:id="@+id/action_AttractionList_to_SelectLanguage"
+            android:id="@+id/action_AttractionListFragment_to_SelectLanguageDialog"
             app:destination="@id/selectLanguageDialog">
         </action>
 
         <action
-            android:id="@+id/action_AttractionList_to_AttractionDetail"
+            android:id="@+id/action_AttractionListFragment_to_AttractionDetailFragment"
             app:destination="@id/attractionDetailFragment">
         </action>
 
@@ -28,8 +28,13 @@
         tools:layout="@layout/fragment_attraction_detail">
 
         <action
-            android:id="@+id/action_AttractionDetail_to_WebView"
+            android:id="@+id/action_AttractionDetailFragment_to_WebView"
             app:destination="@id/webFragment">
+        </action>
+
+        <action
+            android:id="@+id/action_AttractionDetailFragment_to_AttractionDetailDialog"
+            app:destination="@id/attractionDetailDialog">
         </action>
 
     </fragment>
@@ -45,6 +50,13 @@
         android:id="@+id/selectLanguageDialog"
         android:name="com.julian.taipeitour.travel.SelectLanguageDialog"
         tools:layout="@layout/dialog_select_language">
+
+    </dialog>
+
+    <dialog
+        android:id="@+id/attractionDetailDialog"
+        android:name="com.julian.taipeitour.travel.AttractionDetailDialog"
+        tools:layout="@layout/dialog_attraction_detail">
 
     </dialog>
 

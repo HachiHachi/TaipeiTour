@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/iv_no_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        tools:visibility="visible"
+        tools:background="@drawable/ic_problem"/>
+
+    <TextView
+        android:id="@+id/tv_no_data_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/PrimaryText"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:padding="4dp"
+        android:gravity="center"
+        android:visibility="invisible"
+        tools:visibility="visible"
+        tools:text="@string/no_data"/>
+
+    <TextView
+        android:id="@+id/tv_no_data_msg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/SecondaryText"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="center"
+        android:visibility="invisible"
+        tools:visibility="visible"
+        tools:text="@string/no_data"/>
+
+</LinearLayout>

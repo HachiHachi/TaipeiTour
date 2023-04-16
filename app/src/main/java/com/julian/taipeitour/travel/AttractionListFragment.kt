@@ -75,7 +75,8 @@ class AttractionListFragment: BaseFragment<FragmentAttractionListBinding>() {
                 }
 
                 is AttractionListViewModel.AttractionState.ShowAttractionFail -> {
-                    Toast.makeText(context, "fail", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, string(R.string.something_error_msg), Toast.LENGTH_SHORT).show()
+                    attractionAdapter.submitList(viewModel.dataList)
                 }
 
                 is AttractionListViewModel.AttractionState.RefreshAttractionList -> {

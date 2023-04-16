@@ -4,26 +4,42 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.julian.taipeitour.R
+import com.julian.taipeitour.common.ex.ResEx.string
+import com.julian.taipeitour.common.ui.EmptyViewAdapter
 import com.julian.taipeitour.databinding.AdapterNewsBinding
 import com.julian.taipeitour.domain.NewsResponse
 
 @SuppressLint("NotifyDataSetChanged")
-class NewsAdapter(private val itemClickListener: ItemClickListener): RecyclerView.Adapter<NewsAdapter.Holder>() {
+class NewsAdapter(private val itemClickListener: ItemClickListener): EmptyViewAdapter() {
 
     var newsData = mutableListOf<NewsResponse.NewsData>()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        if (viewType == ITEM_TYPE_EMPTY) {
+            return EmptyViewHolder(getEmptyView(parent))
+        }
+
+        //有資料的情況下
         val layoutInflater = LayoutInflater.from(parent.context)
         val binding = AdapterNewsBinding.inflate(layoutInflater, parent, false)
         return Holder(binding)
     }
 
-    override fun onBindViewHolder(holder: Holder, position: Int) {
-        holder.bind(newsData[position])
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        when(holder) {
+            is EmptyViewHolder -> {
+                holder.setIcon(R.drawable.ic_problem)
+                holder.setTitle(string(R.string.no_data))
+            }
+            is Holder -> {
+                holder.bind(newsData[position])
+            }
+        }
     }
 
-    override fun getItemCount(): Int {
+    override fun getDataCount(): Int {
         return newsData.size
     }
 
@@ -38,7 +54,7 @@ class NewsAdapter(private val itemClickListener: ItemClickListener): RecyclerVie
         notifyItemChanged(position)
     }
 
-    inner class Holder(private val bind: AdapterNewsBinding) : RecyclerView.ViewHolder(bind.root) {
+    inner class Holder(private val bind: AdapterNewsBinding) : ViewHolder(bind.root) {
 
         fun bind(response: NewsResponse.NewsData) {
             bind.data = response

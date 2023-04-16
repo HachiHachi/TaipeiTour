@@ -55,6 +55,7 @@ class NewsFragment: BaseFragment<FragmentNewsBinding>() {
 
                 is NewsModel.NewsUIState.ShowNewsFail -> {
                     Toast.makeText(context, it.msg, Toast.LENGTH_SHORT).show()
+                    newsAdapter.submitList(newsModel.dataList)
                 }
 
                 is NewsModel.NewsUIState.RefreshNewsList -> {

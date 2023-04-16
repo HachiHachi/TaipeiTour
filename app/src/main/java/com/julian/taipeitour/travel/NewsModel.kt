@@ -37,13 +37,13 @@ class NewsModel @Inject constructor(
     }
 
     private fun handleNewsData(data: List<NewsResponse.NewsData>?) {
-        if (data.isNullOrEmpty()) {
-            uiState.value = NewsUIState.ShowNewsFail("No Data")
-            return
-        }
+//        if (data.isNullOrEmpty()) {
+//            uiState.value = NewsUIState.ShowNewsFail("No Data")
+//            return
+//        }
         //目前不實作分批取資料,可擴充
         data.apply {
-            dataList.addAll(data)
+            data?.let { dataList.addAll(it) }
             uiState.value = NewsUIState.RefreshNewsList
         }
     }

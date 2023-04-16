@@ -7,7 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.julian.taipeitour.MainActivity
-import com.julian.taipeitour.domain.AttractionsData
+import com.julian.taipeitour.domain.AttractionsResponse
 import com.julian.taipeitour.domain.repo.TourRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -21,7 +21,7 @@ class AttractionListViewModel @Inject constructor(
 
     var uiState = MutableLiveData<AttractionState>()
 
-    var dataList  = mutableListOf<AttractionsData>()
+    var dataList  = mutableListOf<AttractionsResponse.AttractionsData>()
 
     var isLoadFinish: Boolean = false
 
@@ -44,7 +44,7 @@ class AttractionListViewModel @Inject constructor(
         }
     }
 
-    private fun handleAttractionData(data: List<AttractionsData>?) {
+    private fun handleAttractionData(data: List<AttractionsResponse.AttractionsData>?) {
         Log.d(TAG, "Attraction:" + "${data?.size}")
         if (data.isNullOrEmpty() || data.size < 30) {
             isLoadFinish = true
@@ -67,7 +67,7 @@ class AttractionListViewModel @Inject constructor(
         setAttractionQuery(lang, 1)
     }
 
-    fun goToDetail(attractionsData: AttractionsData) {
+    fun goToDetail(attractionsData: AttractionsResponse.AttractionsData) {
         val bundle = bundleOf(MainActivity.BUNDLE_KEY to attractionsData)
         uiState.value = AttractionState.NextToDetail(bundle)
     }

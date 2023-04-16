@@ -5,6 +5,7 @@ import com.julian.taipeitour.common.IoDispatcher
 import com.julian.taipeitour.common.utility.HttpUtility
 import com.julian.taipeitour.common.utility.HttpUtility.result
 import com.julian.taipeitour.domain.AttractionsResponse
+import com.julian.taipeitour.domain.NewsResponse
 import com.julian.taipeitour.domain.TravelApi
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
@@ -21,6 +22,17 @@ class TourRepository @Inject constructor(
         return withContext(dispatcher) {
             try {
                 val response = api.getAttractionsList(lang, page)
+                result(response)
+            } catch (throwable: Throwable) {
+                Result.failure(throwable)
+            }
+        }
+    }
+
+    suspend fun getNews(lang: String, page: Int): Result<NewsResponse> {
+        return withContext(dispatcher) {
+            try {
+                val response = api.getNews(lang, page)
                 result(response)
             } catch (throwable: Throwable) {
                 Result.failure(throwable)

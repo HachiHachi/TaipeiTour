@@ -8,7 +8,7 @@
 
         <variable
             name="data"
-            type="com.julian.taipeitour.domain.AttractionsData" />
+            type="com.julian.taipeitour.domain.AttractionsResponse.AttractionsData" />
 
     </data>
 

@@ -13,7 +13,7 @@ import com.julian.taipeitour.R
 import com.julian.taipeitour.common.ex.ResEx.string
 import com.julian.taipeitour.common.ui.BaseFragment
 import com.julian.taipeitour.databinding.FragmentAttractionListBinding
-import com.julian.taipeitour.domain.AttractionsData
+import com.julian.taipeitour.domain.AttractionsResponse
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -52,6 +52,10 @@ class AttractionListFragment: BaseFragment<FragmentAttractionListBinding>() {
                 when (it.itemId) {
                     R.id.menu_lang -> {
                         showLangDialog()
+                        true
+                    }
+                    R.id.menu_news -> {
+                        goToNews()
                         true
                     }
                     else -> {
@@ -96,7 +100,7 @@ class AttractionListFragment: BaseFragment<FragmentAttractionListBinding>() {
     private fun initAdapter() {
         binding.rvTravelAttraction.apply {
             attractionAdapter = AttractionsAdapter(object : AttractionsAdapter.ItemClickListener {
-                override fun onItemClick(attractionsData: AttractionsData) {
+                override fun onItemClick(attractionsData: AttractionsResponse.AttractionsData) {
                     viewModel.goToDetail(attractionsData)
                 }
             })
@@ -133,6 +137,10 @@ class AttractionListFragment: BaseFragment<FragmentAttractionListBinding>() {
 
     private fun showLangDialog() {
         findNavController().navigate(R.id.action_AttractionListFragment_to_SelectLanguageDialog)
+    }
+
+    private fun goToNews() {
+        findNavController().navigate(R.id.action_AttractionListFragment_to_NewsFragment)
     }
 
     override fun onDestroyView() {

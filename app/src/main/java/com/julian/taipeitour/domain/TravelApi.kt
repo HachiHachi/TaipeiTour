@@ -14,4 +14,10 @@ interface TravelApi {
         @Query("page") page: Int
     ): Response<AttractionsResponse>
 
+    //取得活動資訊
+    @GET("{lang}/Events/News")
+    suspend fun getNews(
+        @Path("lang") lang: String,
+        @Query("page") page: Int
+    ): Response<NewsResponse>
 }

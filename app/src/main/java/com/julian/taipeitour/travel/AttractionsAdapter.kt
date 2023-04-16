@@ -8,12 +8,12 @@ import coil.load
 import coil.transform.RoundedCornersTransformation
 import com.julian.taipeitour.R
 import com.julian.taipeitour.databinding.AdapterAttractionListBinding
-import com.julian.taipeitour.domain.AttractionsData
+import com.julian.taipeitour.domain.AttractionsResponse
 
 class AttractionsAdapter(var itemClick: ItemClickListener) :
     RecyclerView.Adapter<AttractionsAdapter.Holder>() {
 
-    var attractionsList = mutableListOf<AttractionsData>()
+    var attractionsList = mutableListOf<AttractionsResponse.AttractionsData>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -30,7 +30,7 @@ class AttractionsAdapter(var itemClick: ItemClickListener) :
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun submitList(itemAttractions: List<AttractionsData>) {
+    fun submitList(itemAttractions: List<AttractionsResponse.AttractionsData>) {
         this.attractionsList = itemAttractions.toMutableList()
         notifyDataSetChanged()
     }
@@ -38,7 +38,7 @@ class AttractionsAdapter(var itemClick: ItemClickListener) :
 
     inner class Holder(private val binding: AdapterAttractionListBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(attractionsData: AttractionsData) {
+        fun bind(attractionsData: AttractionsResponse.AttractionsData) {
             binding.data = attractionsData
             binding.imgAttraction.load(attractionsData.images.getOrNull(0)?.src) {
                 crossfade(true)
@@ -56,6 +56,6 @@ class AttractionsAdapter(var itemClick: ItemClickListener) :
     }
 
     interface ItemClickListener {
-        fun onItemClick(attractionsData: AttractionsData)
+        fun onItemClick(attractionsData: AttractionsResponse.AttractionsData)
     }
 }

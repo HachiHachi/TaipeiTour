@@ -19,18 +19,18 @@ import com.julian.taipeitour.R
 import com.julian.taipeitour.common.ex.ResEx.string
 import com.julian.taipeitour.common.ui.BaseFragment
 import com.julian.taipeitour.databinding.FragmentAttractionDetailBinding
-import com.julian.taipeitour.domain.AttractionsData
+import com.julian.taipeitour.domain.AttractionsResponse
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class AttractionDetailFragment: BaseFragment<FragmentAttractionDetailBinding>() {
 
-    private lateinit var attractionData: AttractionsData
+    private lateinit var attractionData: AttractionsResponse.AttractionsData
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        attractionData = arguments?.getSerializable(MainActivity.BUNDLE_KEY) as AttractionsData
+        attractionData = arguments?.getSerializable(MainActivity.BUNDLE_KEY) as AttractionsResponse.AttractionsData
         binding.data = attractionData
 
         initTooBar()

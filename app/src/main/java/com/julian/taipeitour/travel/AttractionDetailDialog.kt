@@ -8,7 +8,7 @@ import com.julian.taipeitour.MainActivity
 import com.julian.taipeitour.R
 import com.julian.taipeitour.common.ex.OtherEx.case
 import com.julian.taipeitour.databinding.DialogAttractionDetailBinding
-import com.julian.taipeitour.domain.AttractionsData
+import com.julian.taipeitour.domain.AttractionsResponse
 import com.youth.banner.Banner
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -16,13 +16,13 @@ import dagger.hilt.android.AndroidEntryPoint
 class AttractionDetailDialog: DialogFragment(R.layout.dialog_attraction_detail) {
 
     private lateinit var binding: DialogAttractionDetailBinding
-    private lateinit var attractionData: AttractionsData
+    private lateinit var attractionData: AttractionsResponse.AttractionsData
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = DialogAttractionDetailBinding.bind(view)
 
-        attractionData = arguments?.getSerializable(MainActivity.BUNDLE_KEY) as AttractionsData
+        attractionData = arguments?.getSerializable(MainActivity.BUNDLE_KEY) as AttractionsResponse.AttractionsData
         binding.data = attractionData
 
         setBanner()

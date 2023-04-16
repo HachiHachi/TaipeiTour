@@ -20,6 +20,10 @@
             app:destination="@id/attractionDetailFragment">
         </action>
 
+        <action
+            android:id="@+id/action_AttractionListFragment_to_NewsFragment"
+            app:destination="@id/newsFragment">
+        </action>
     </fragment>
 
     <fragment
@@ -43,6 +47,19 @@
         android:id="@+id/webFragment"
         android:name="com.julian.taipeitour.travel.WebViewFragment"
         tools:layout="@layout/fragment_webview">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/newsFragment"
+        android:name="com.julian.taipeitour.travel.NewsFragment"
+        tools:layout="@layout/fragment_news">
+
+        <action
+            android:id="@+id/action_NewsFragment_to_SelectLanguageDialog"
+            app:destination="@id/selectLanguageDialog">
+
+        </action>
 
     </fragment>
 

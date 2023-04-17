@@ -43,14 +43,27 @@
             android:layout_height="wrap_content"
             style="@style/PrimaryText"
             android:gravity="center_vertical"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
+            android:layout_marginEnd="8dp"
             android:text="@{data.title}"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toTopOf="@id/tv_news_content"
             app:layout_constraintStart_toStartOf="@id/guide_start"
             app:layout_constraintEnd_toStartOf="@id/image"
             tools:text="This is News Title"/>
+
+        <TextView
+            android:id="@+id/tv_news_time"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:text="@{data.posted}"
+            android:textSize="12dp"
+            android:textColor="@color/gray_500"
+            app:layout_constraintBottom_toTopOf="@id/tv_news_content"
+            app:layout_constraintEnd_toStartOf="@id/guide_end"
+            tools:text="2023-04-03 08:00:00 +08:00"/>
 
         <TextView
             android:id="@+id/tv_news_content"

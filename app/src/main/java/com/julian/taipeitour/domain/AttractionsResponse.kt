@@ -8,7 +8,7 @@ data class AttractionsResponse(
     val data: List<AttractionsData>,
     @SerializedName("total")
     val total: Int
-) {
+): Serializable {
     data class AttractionsData(
         @SerializedName("address")
         val address: String,
@@ -43,7 +43,7 @@ data class AttractionsResponse(
         @SerializedName("name")
         val name: String,
         @SerializedName("name_zh")
-        val nameZh: Any,
+        val nameZh: String? = "",
         @SerializedName("nlat")
         val nlat: Double,
         @SerializedName("official_site")
